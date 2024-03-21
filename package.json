@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:migrate": "drizzle-kit generate:pg --out src/db/migrations --schema src/db/schema.ts",
+    "migrate": "npx tsx src/db/migrate"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.8.0",

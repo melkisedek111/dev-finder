@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+spawn npm run db:push
+
+# Expect the prompt for selecting an option
+expect "Select an option:"
+# Send the desired option
+send "Yes, I want to remove 1 table\r"
+
+# Wait for the process to finish
+expect eof
