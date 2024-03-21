@@ -4,6 +4,7 @@ import { getRooms } from "@/data-access/room";
 import { SearchBar } from "./search-bar";
 import RoomCard from "@/components/room-card";
 import { unstable_noStore } from "next/cache";
+import Image from "next/image";
 
 export default async function Browse({ searchParams }: { searchParams: { search: string } }) {
     unstable_noStore();
@@ -22,6 +23,15 @@ export default async function Browse({ searchParams }: { searchParams: { search:
                     <RoomCard key={room.id} room={room} />
                 ))}
             </div>
+
+            {
+                rooms.length === 0 && (
+                    <div className="flex flex-col gap-4 justify-center items-center mt-24">
+                        <Image src="/nodata.svg" width={200} height={200} alt="no data" />
+                        <h2 className="text-2xl">No dev rooms yet!</h2>
+                    </div>
+                )
+            }
         </main>
     );
 }
