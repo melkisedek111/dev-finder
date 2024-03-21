@@ -5,11 +5,11 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { DevFinderVideo } from "./video-player";
 import { splitTags } from "@/lib/utils";
+import { unstable_noStore } from "next/cache";
 
 export default async function RoomPage(props: { params: { roomId: string } }) {
+    unstable_noStore();
     const roomId = props.params.roomId;
-    console.log(props.params)
-
     const room = await getRoom(roomId);
 
     if (!room) return (<div>No room found!</div>);
