@@ -42,7 +42,7 @@ export function EditRoomForm({ room }: { room: Room }) {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        const room = await editRoomAction({
+        await editRoomAction({
             id: params.roomId as string,
             ...values
         });
@@ -51,7 +51,6 @@ export function EditRoomForm({ room }: { room: Room }) {
             title: "Room Updated",
             description: "Your room was successfully updated.",
         })
-        router.push(`/rooms/${room.id}`);
     }
 
     return (
